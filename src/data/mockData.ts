@@ -1,0 +1,88 @@
+import { EtcdEntry } from "@/types/etcd";
+
+export const mockEtcdData: EtcdEntry[] = [
+  {
+    key: "/config/database/host",
+    value: "postgres.internal.svc.cluster.local",
+    version: 3,
+    createRevision: 1001,
+    modRevision: 1045,
+  },
+  {
+    key: "/config/database/port",
+    value: "5432",
+    version: 1,
+    createRevision: 1002,
+    modRevision: 1002,
+  },
+  {
+    key: "/config/database/credentials",
+    value: JSON.stringify({ username: "admin", password: "***" }, null, 2),
+    version: 5,
+    createRevision: 1003,
+    modRevision: 1089,
+  },
+  {
+    key: "/services/payment/enabled",
+    value: "true",
+    version: 2,
+    createRevision: 1010,
+    modRevision: 1067,
+  },
+  {
+    key: "/services/payment/provider",
+    value: JSON.stringify({ name: "stripe", region: "us-east-1", sandbox: false }, null, 2),
+    version: 4,
+    createRevision: 1011,
+    modRevision: 1078,
+  },
+  {
+    key: "/services/auth/jwt-secret",
+    value: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    version: 1,
+    createRevision: 1020,
+    modRevision: 1020,
+  },
+  {
+    key: "/services/auth/session-ttl",
+    value: "3600",
+    version: 2,
+    createRevision: 1021,
+    modRevision: 1055,
+  },
+  {
+    key: "/cluster/nodes/node-1",
+    value: JSON.stringify({ ip: "10.0.0.1", status: "healthy", cpu: 45, memory: 62 }, null, 2),
+    version: 128,
+    createRevision: 1030,
+    modRevision: 1234,
+  },
+  {
+    key: "/cluster/nodes/node-2",
+    value: JSON.stringify({ ip: "10.0.0.2", status: "healthy", cpu: 32, memory: 48 }, null, 2),
+    version: 115,
+    createRevision: 1031,
+    modRevision: 1230,
+  },
+  {
+    key: "/feature-flags/dark-mode",
+    value: "enabled",
+    version: 1,
+    createRevision: 1100,
+    modRevision: 1100,
+  },
+  {
+    key: "/feature-flags/beta-users",
+    value: JSON.stringify(["user-001", "user-002", "user-003"], null, 2),
+    version: 6,
+    createRevision: 1101,
+    modRevision: 1189,
+  },
+  {
+    key: "/cache/redis/host",
+    value: "redis-master.cache.svc.cluster.local",
+    version: 2,
+    createRevision: 1200,
+    modRevision: 1245,
+  },
+];
