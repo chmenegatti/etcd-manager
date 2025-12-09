@@ -1,3 +1,5 @@
+"use client";
+
 import { Pencil, Trash2, Copy, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EtcdEntry } from "@/types/etcd";
@@ -25,11 +27,19 @@ function isJson(str: string): boolean {
 
 export function KeyValueTable({ entries, onEdit, onDelete }: KeyValueTableProps) {
   const copyToClipboard = async (text: string, label: string) => {
-    await navigator.clipboard.writeText(text);
-    toast({
-      title: "Copiado!",
-      description: `${label} copiado para a área de transferência`,
-    });
+    try {
+      await navigator.clipboard.writeText(text);
+      toast({
+        title: "Copiado!",
+        description: `${label} copiado para a área de transferência`,
+      });
+    } catch (error: any) {
+      toast({
+        title: "Falha ao copiar",
+        description: error?.message ?? "Verifique as permissões do navegador",
+        variant: "destructive",
+      });
+    }
   };
 
   if (entries.length === 0) {
@@ -91,11 +101,10 @@ export function KeyValueTable({ entries, onEdit, onDelete }: KeyValueTableProps)
               <td className="px-6 py-4">
                 <div className="flex items-center gap-2">
                   <code
-                    className={`text-sm font-mono ${
-                      isJson(entry.value)
+                    className={`text-sm font-mono ${isJson(entry.value)
                         ? "text-ayu-blue"
                         : "text-muted-foreground"
-                    }`}
+                      }`}
                   >
                     {truncateValue(entry.value.replace(/\n/g, " "))}
                   </code>

@@ -1,73 +1,65 @@
-# Welcome to your Lovable project
+# 🚀 ETCD Manager (Next.js + ETCD 3)
 
-## Project info
+Uma UI para administrar chaves/valores do ETCD 3.5.x, com frontend Next.js (App Router) e BFF integrado (API routes) usando `etcd3`.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## ✨ Principais features
+- CRUD de chaves ETCD (listar, criar/editar, deletar) com React Query.
+- Detecção de JSON, cópia rápida de chave/valor, drawer amplo para edição.
+- Integração direta com ETCD 3 via API interna do Next.
+- Pronto para contêiner (Dockerfile + docker-compose).
 
-## How can I edit this code?
+## 🧰 Stack
+- Next.js 15 (App Router) + TypeScript
+- React Query + shadcn/ui + Tailwind CSS
+- ETCD v3 (cliente `etcd3` gRPC)
 
-There are several ways of editing your application.
+## 🔧 Variáveis de ambiente
+- `ETCD_ENDPOINT` (ou `ETCD_ENDPOINTS`): endpoint do ETCD. Ex.: `http://nemesis-etcd:2379`
+- `ETCD_CERT`, `ETCD_KEY`, `ETCD_CA` (opcionais): conteúdo PEM **ou** caminho do arquivo (para mTLS).
+- `ETCD_USERNAME`, `ETCD_PASSWORD` (opcionais): credenciais RBAC.
+- `NEXT_PUBLIC_ETCD_ENDPOINT` (opcional): texto exibido no header (ex.: `nemesis-etcd:2379`).
+- `NEXT_PUBLIC_API_BASE` (opcional): base URL para o frontend chamar a API (deixe vazio quando o front roda junto).
 
-**Use Lovable**
+## ▶️ Rodando localmente (dev)
+```bash
+# instalar deps
+yarn install
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# subir em dev (porta 3000 padrão do Next)
+ETCD_ENDPOINT=http://127.0.0.1:2379 yarn dev
 ```
+Acesse http://localhost:3000 (ou a porta escolhida). O front chama `/api/kv`, que fala com o ETCD via `ETCD_ENDPOINT`.
 
-**Edit a file directly in GitHub**
+## 🐳 Docker
+### Build & run direto
+```bash
+docker build -t etcd-manager .
+docker run --rm -p 9100:3000 \
+  -e ETCD_ENDPOINT=http://nemesis-etcd:2379 \
+  -e NEXT_PUBLIC_ETCD_ENDPOINT=nemesis-etcd:2379 \
+  --network nemesis-starter_nemesis \
+  etcd-manager
+```
+- O contêiner ouve em 3000; mapeamos para 9100 no host.
+- A rede externa `nemesis-starter_nemesis` já contém o ETCD com nome `nemesis-etcd`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### docker-compose
+```bash
+docker-compose up --build
+```
+- Porta host: `9100` → container `3000`.
+- Usa rede externa `nemesis-starter_nemesis`.
+- ETCD esperado em `nemesis-etcd:2379` (ajuste variáveis se diferente).
 
-**Use GitHub Codespaces**
+## 📂 Estrutura rápida
+- `src/app` — App Router, layout, páginas e API routes (`/api/kv`).
+- `src/lib/etcd.ts` — cliente ETCD (gRPC) configurado via env.
+- `src/lib/api.ts` — chamadas do front para as rotas internas.
+- `src/components` — UI (header, toolbar, tabela, drawer, dialogs).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## ✅ Checklist antes de subir
+- ETCD acessível a partir do backend (host/porta/rede corretos).
+- Certs/usuário definidos se o cluster exigir TLS ou RBAC.
+- Porta 9100 liberada no host.
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Boas administrações! 🎉

@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Ayu Dark Bordered Theme Colors */
+    --background: 220 33% 7%;
+    --foreground: 43 12% 73%;
+
+    --card: 220 40% 5%;
+    --card-foreground: 43 12% 73%;
+
+    --popover: 220 33% 5%;
+    --popover-foreground: 43 12% 73%;
+
+    /* Golden/Yellow - Primary action color */
+    --primary: 41 74% 61%;
+    --primary-foreground: 220 40% 5%;
+
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 43 12% 73%;
+
+    --muted: 220 14% 16%;
+    --muted-foreground: 218 10% 37%;
+
+    /* Blue - Accent color */
+    --accent: 199 76% 56%;
+    --accent-foreground: 220 40% 5%;
+
+    --destructive: 0 60% 59%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 30% 9%;
+    --input: 220 33% 7%;
+    --ring: 41 74% 61%;
+
+    --radius: 0.5rem;
+
+    /* Semantic colors from Ayu */
+    --success: 100 65% 62%;
+    --warning: 35 100% 65%;
+    --info: 199 76% 56%;
+    --error: 0 60% 59%;
+
+    /* Additional Ayu accent colors */
+    --ayu-orange: 27 100% 65%;
+    --ayu-yellow: 41 74% 61%;
+    --ayu-green: 100 65% 62%;
+    --ayu-blue: 199 76% 56%;
+    --ayu-purple: 270 30% 45%;
+    --ayu-red: 355 75% 65%;
+  }
+
+  .dark {
+    --background: 220 33% 7%;
+    --foreground: 43 12% 73%;
+
+    --card: 220 40% 5%;
+    --card-foreground: 43 12% 73%;
+
+    --popover: 220 33% 5%;
+    --popover-foreground: 43 12% 73%;
+
+    --primary: 41 74% 61%;
+    --primary-foreground: 220 40% 5%;
+
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 43 12% 73%;
+
+    --muted: 220 14% 16%;
+    --muted-foreground: 218 10% 37%;
+
+    --accent: 199 76% 56%;
+    --accent-foreground: 220 40% 5%;
+
+    --destructive: 0 60% 59%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 30% 9%;
+    --input: 220 33% 7%;
+    --ring: 41 74% 61%;
+
+    --success: 100 65% 62%;
+    --warning: 35 100% 65%;
+    --info: 199 76% 56%;
+    --error: 0 60% 59%;
+
+    --ayu-orange: 27 100% 65%;
+    --ayu-yellow: 41 74% 61%;
+    --ayu-green: 100 65% 62%;
+    --ayu-blue: 199 76% 56%;
+    --ayu-purple: 270 30% 45%;
+    --ayu-red: 355 75% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply dark;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Ayu glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.25);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.25);
+  }
+
+  .text-gradient-ayu {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--ayu-orange)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}

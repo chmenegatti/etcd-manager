@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { X, Save, Code, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -53,7 +55,6 @@ export function KeyValueDrawer({
   const handleSave = () => {
     if (!key.trim()) return;
     onSave(key, value);
-    onClose();
   };
 
   const handleFormatJson = () => {
@@ -75,7 +76,7 @@ export function KeyValueDrawer({
       />
 
       {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-full max-w-lg bg-card border-l border-border shadow-2xl z-50 animate-slide-in-right flex flex-col">
+      <div className="fixed right-0 top-0 h-full w-full max-w-4xl bg-card border-l border-border shadow-2xl z-50 animate-slide-in-right flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border">
           <div>
@@ -106,9 +107,7 @@ export function KeyValueDrawer({
               value={key}
               onChange={(e) => setKey(e.target.value)}
               disabled={isEditing}
-              className={`font-mono ${
-                isEditing ? "opacity-60 cursor-not-allowed" : ""
-              }`}
+              className={`font-mono ${isEditing ? "opacity-60 cursor-not-allowed" : ""}`}
             />
             {isEditing && (
               <p className="text-xs text-muted-foreground">
@@ -152,33 +151,25 @@ export function KeyValueDrawer({
               placeholder='{"key": "value"} ou texto simples'
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              className="min-h-[300px] font-mono text-sm resize-none"
+              className="min-h-[480px] font-mono text-sm resize-y"
             />
           </div>
 
           {editingEntry && (
             <div className="rounded-lg bg-secondary/50 p-4 space-y-2">
-              <h4 className="text-sm font-medium text-foreground">
-                Informações
-              </h4>
+              <h4 className="text-sm font-medium text-foreground">Informações</h4>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-muted-foreground">Versão:</span>
-                  <span className="ml-2 text-foreground">
-                    {editingEntry.version}
-                  </span>
+                  <span className="ml-2 text-foreground">{editingEntry.version}</span>
                 </div>
                 <div>
                   <span className="text-muted-foreground">Criação:</span>
-                  <span className="ml-2 text-foreground font-mono">
-                    {editingEntry.createRevision}
-                  </span>
+                  <span className="ml-2 text-foreground font-mono">{editingEntry.createRevision}</span>
                 </div>
                 <div>
                   <span className="text-muted-foreground">Modificação:</span>
-                  <span className="ml-2 text-foreground font-mono">
-                    {editingEntry.modRevision}
-                  </span>
+                  <span className="ml-2 text-foreground font-mono">{editingEntry.modRevision}</span>
                 </div>
               </div>
             </div>
