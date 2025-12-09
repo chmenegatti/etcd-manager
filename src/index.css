@@ -6,94 +6,94 @@
 
 @layer base {
   :root {
-    /* Andromeda Theme Colors */
-    --background: 228 18% 16%;
-    --foreground: 280 14% 84%;
+    /* Ayu Dark Bordered Theme Colors */
+    --background: 220 33% 7%;
+    --foreground: 43 12% 73%;
 
-    --card: 228 20% 14%;
-    --card-foreground: 280 14% 84%;
+    --card: 220 40% 5%;
+    --card-foreground: 43 12% 73%;
 
-    --popover: 228 22% 12%;
-    --popover-foreground: 280 14% 84%;
+    --popover: 220 33% 5%;
+    --popover-foreground: 43 12% 73%;
 
-    /* Cyan/Turquoise - Primary action color */
-    --primary: 171 100% 45%;
-    --primary-foreground: 228 18% 16%;
+    /* Golden/Yellow - Primary action color */
+    --primary: 41 74% 61%;
+    --primary-foreground: 220 40% 5%;
 
-    --secondary: 228 16% 22%;
-    --secondary-foreground: 280 14% 84%;
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 43 12% 73%;
 
-    --muted: 228 14% 20%;
-    --muted-foreground: 280 10% 55%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 218 10% 37%;
 
-    /* Pink/Magenta - Accent color */
-    --accent: 310 45% 56%;
-    --accent-foreground: 0 0% 100%;
+    /* Blue - Accent color */
+    --accent: 199 76% 56%;
+    --accent-foreground: 220 40% 5%;
 
-    --destructive: 10 90% 60%;
+    --destructive: 0 60% 59%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 228 14% 24%;
-    --input: 228 20% 18%;
-    --ring: 171 100% 45%;
+    --border: 220 30% 9%;
+    --input: 220 33% 7%;
+    --ring: 41 74% 61%;
 
     --radius: 0.5rem;
 
-    /* Semantic colors from Andromeda */
-    --success: 90 68% 52%;
-    --warning: 48 100% 71%;
-    --info: 200 100% 50%;
-    --error: 10 90% 60%;
+    /* Semantic colors from Ayu */
+    --success: 100 65% 62%;
+    --warning: 35 100% 65%;
+    --info: 199 76% 56%;
+    --error: 0 60% 59%;
 
-    /* Additional Andromeda accent colors */
-    --cyan: 171 100% 45%;
-    --magenta: 310 45% 56%;
-    --yellow: 48 100% 71%;
-    --blue: 200 100% 50%;
-    --green: 90 68% 52%;
-    --red: 10 90% 60%;
+    /* Additional Ayu accent colors */
+    --ayu-orange: 27 100% 65%;
+    --ayu-yellow: 41 74% 61%;
+    --ayu-green: 100 65% 62%;
+    --ayu-blue: 199 76% 56%;
+    --ayu-purple: 270 30% 45%;
+    --ayu-red: 355 75% 65%;
   }
 
   .dark {
-    --background: 228 18% 16%;
-    --foreground: 280 14% 84%;
+    --background: 220 33% 7%;
+    --foreground: 43 12% 73%;
 
-    --card: 228 20% 14%;
-    --card-foreground: 280 14% 84%;
+    --card: 220 40% 5%;
+    --card-foreground: 43 12% 73%;
 
-    --popover: 228 22% 12%;
-    --popover-foreground: 280 14% 84%;
+    --popover: 220 33% 5%;
+    --popover-foreground: 43 12% 73%;
 
-    --primary: 171 100% 45%;
-    --primary-foreground: 228 18% 16%;
+    --primary: 41 74% 61%;
+    --primary-foreground: 220 40% 5%;
 
-    --secondary: 228 16% 22%;
-    --secondary-foreground: 280 14% 84%;
+    --secondary: 220 20% 12%;
+    --secondary-foreground: 43 12% 73%;
 
-    --muted: 228 14% 20%;
-    --muted-foreground: 280 10% 55%;
+    --muted: 220 14% 16%;
+    --muted-foreground: 218 10% 37%;
 
-    --accent: 310 45% 56%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 199 76% 56%;
+    --accent-foreground: 220 40% 5%;
 
-    --destructive: 10 90% 60%;
+    --destructive: 0 60% 59%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 228 14% 24%;
-    --input: 228 20% 18%;
-    --ring: 171 100% 45%;
+    --border: 220 30% 9%;
+    --input: 220 33% 7%;
+    --ring: 41 74% 61%;
 
-    --success: 90 68% 52%;
-    --warning: 48 100% 71%;
-    --info: 200 100% 50%;
-    --error: 10 90% 60%;
+    --success: 100 65% 62%;
+    --warning: 35 100% 65%;
+    --info: 199 76% 56%;
+    --error: 0 60% 59%;
 
-    --cyan: 171 100% 45%;
-    --magenta: 310 45% 56%;
-    --yellow: 48 100% 71%;
-    --blue: 200 100% 50%;
-    --green: 90 68% 52%;
-    --red: 10 90% 60%;
+    --ayu-orange: 27 100% 65%;
+    --ayu-yellow: 41 74% 61%;
+    --ayu-green: 100 65% 62%;
+    --ayu-blue: 199 76% 56%;
+    --ayu-purple: 270 30% 45%;
+    --ayu-red: 355 75% 65%;
   }
 }
 
@@ -123,7 +123,7 @@
   
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: hsl(var(--muted)) transparent;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
   }
   
   .scrollbar-thin::-webkit-scrollbar {
@@ -144,17 +144,17 @@
     background: hsl(var(--muted-foreground) / 0.5);
   }
 
-  /* Andromeda glow effects */
-  .glow-cyan {
-    box-shadow: 0 0 20px hsl(var(--cyan) / 0.3);
+  /* Ayu glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.25);
   }
 
-  .glow-magenta {
-    box-shadow: 0 0 20px hsl(var(--magenta) / 0.3);
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.25);
   }
 
-  .text-gradient-andromeda {
-    background: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--magenta)));
+  .text-gradient-ayu {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--ayu-orange)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
