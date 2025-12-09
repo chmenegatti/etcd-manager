@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['Fira Code', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,6 +53,11 @@ export default {
         },
         success: "hsl(var(--success))",
         warning: "hsl(var(--warning))",
+        info: "hsl(var(--info))",
+        error: "hsl(var(--error))",
+        cyan: "hsl(var(--cyan))",
+        magenta: "hsl(var(--magenta))",
+        yellow: "hsl(var(--yellow))",
       },
       borderRadius: {
         lg: "var(--radius)",

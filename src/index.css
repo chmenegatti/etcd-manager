@@ -2,72 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    /* Andromeda Theme Colors */
+    --background: 228 18% 16%;
+    --foreground: 280 14% 84%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 228 20% 14%;
+    --card-foreground: 280 14% 84%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 228 22% 12%;
+    --popover-foreground: 280 14% 84%;
 
-    --primary: 24 95% 53%;
-    --primary-foreground: 0 0% 100%;
+    /* Cyan/Turquoise - Primary action color */
+    --primary: 171 100% 45%;
+    --primary-foreground: 228 18% 16%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 228 16% 22%;
+    --secondary-foreground: 280 14% 84%;
 
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 228 14% 20%;
+    --muted-foreground: 280 10% 55%;
 
-    --accent: 24 95% 53%;
+    /* Pink/Magenta - Accent color */
+    --accent: 310 45% 56%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 10 90% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 24 95% 53%;
+    --border: 228 14% 24%;
+    --input: 228 20% 18%;
+    --ring: 171 100% 45%;
 
     --radius: 0.5rem;
 
-    --success: 142 76% 36%;
-    --warning: 38 92% 50%;
+    /* Semantic colors from Andromeda */
+    --success: 90 68% 52%;
+    --warning: 48 100% 71%;
+    --info: 200 100% 50%;
+    --error: 10 90% 60%;
+
+    /* Additional Andromeda accent colors */
+    --cyan: 171 100% 45%;
+    --magenta: 310 45% 56%;
+    --yellow: 48 100% 71%;
+    --blue: 200 100% 50%;
+    --green: 90 68% 52%;
+    --red: 10 90% 60%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    --background: 228 18% 16%;
+    --foreground: 280 14% 84%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 228 20% 14%;
+    --card-foreground: 280 14% 84%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 228 22% 12%;
+    --popover-foreground: 280 14% 84%;
 
-    --primary: 24 95% 53%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 171 100% 45%;
+    --primary-foreground: 228 18% 16%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 228 16% 22%;
+    --secondary-foreground: 280 14% 84%;
 
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 228 14% 20%;
+    --muted-foreground: 280 10% 55%;
 
-    --accent: 24 95% 53%;
+    --accent: 310 45% 56%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 10 90% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 24 95% 53%;
+    --border: 228 14% 24%;
+    --input: 228 20% 18%;
+    --ring: 171 100% 45%;
+
+    --success: 90 68% 52%;
+    --warning: 48 100% 71%;
+    --info: 200 100% 50%;
+    --error: 10 90% 60%;
+
+    --cyan: 171 100% 45%;
+    --magenta: 310 45% 56%;
+    --yellow: 48 100% 71%;
+    --blue: 200 100% 50%;
+    --green: 90 68% 52%;
+    --red: 10 90% 60%;
   }
 }
 
@@ -81,8 +107,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'Fira Code', monospace;
   }
 }
 
@@ -106,7 +136,27 @@
   }
   
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted));
+    background: hsl(var(--muted-foreground) / 0.3);
     border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Andromeda glow effects */
+  .glow-cyan {
+    box-shadow: 0 0 20px hsl(var(--cyan) / 0.3);
+  }
+
+  .glow-magenta {
+    box-shadow: 0 0 20px hsl(var(--magenta) / 0.3);
+  }
+
+  .text-gradient-andromeda {
+    background: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--magenta)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

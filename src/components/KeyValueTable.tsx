@@ -75,7 +75,7 @@ export function KeyValueTable({ entries, onEdit, onDelete }: KeyValueTableProps)
             >
               <td className="px-6 py-4">
                 <div className="flex items-center gap-2">
-                  <code className="text-sm font-mono text-primary break-all">
+                  <code className="text-sm font-mono text-cyan break-all">
                     {entry.key}
                   </code>
                   <Button
@@ -93,7 +93,7 @@ export function KeyValueTable({ entries, onEdit, onDelete }: KeyValueTableProps)
                   <code
                     className={`text-sm font-mono ${
                       isJson(entry.value)
-                        ? "text-accent"
+                        ? "text-magenta"
                         : "text-muted-foreground"
                     }`}
                   >

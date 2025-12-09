@@ -124,7 +124,7 @@ export function KeyValueDrawer({
               </Label>
               <div className="flex items-center gap-2">
                 {isJson && (
-                  <span className="text-xs text-primary flex items-center gap-1">
+                  <span className="text-xs text-cyan flex items-center gap-1">
                     <Code className="w-3 h-3" />
                     JSON válido
                   </span>
