@@ -7,13 +7,13 @@ interface HeaderProps {
 
 export function Header({ connectionStatus }: HeaderProps) {
   return (
-    <header className="h-16 border-b border-border bg-card/80 backdrop-blur-sm px-6 flex items-center justify-between">
+    <header className="h-16 border-b border-border bg-card px-6 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan to-magenta/80 flex items-center justify-center shadow-lg glow-cyan">
-          <Database className="w-5 h-5 text-primary-foreground" />
+        <div className="w-10 h-10 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center">
+          <Database className="w-5 h-5 text-primary" />
         </div>
         <div>
-          <h1 className="text-lg font-semibold text-gradient-andromeda tracking-tight">
+          <h1 className="text-lg font-semibold text-gradient-ayu tracking-tight">
             ETCD Manager
           </h1>
           <p className="text-xs text-muted-foreground">
@@ -22,11 +22,11 @@ export function Header({ connectionStatus }: HeaderProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/50 border border-border">
+      <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary border border-border">
         <span
           className={`w-2 h-2 rounded-full ${
             connectionStatus.connected
-              ? "bg-cyan animate-pulse shadow-[0_0_8px_hsl(171,100%,45%)]"
+              ? "bg-ayu-green animate-pulse shadow-[0_0_8px_hsl(100,65%,62%)]"
               : "bg-destructive"
           }`}
         />
@@ -34,7 +34,7 @@ export function Header({ connectionStatus }: HeaderProps) {
           {connectionStatus.connected ? "Conectado em" : "Desconectado"}
         </span>
         {connectionStatus.connected && (
-          <code className="text-sm font-mono text-cyan">
+          <code className="text-sm font-mono text-primary">
             {connectionStatus.endpoint}
           </code>
         )}
