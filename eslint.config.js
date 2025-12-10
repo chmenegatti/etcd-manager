@@ -10,18 +10,29 @@ export default tseslint.config(
     files: ["**/*.{ts,tsx,js,jsx}"],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: { ...globals.browser, ...globals.node },
+      globals: { ...globals.browser, ...globals.node, React: "readonly" },
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      parser: tseslint.parser,
     },
     plugins: {
       "react-hooks": reactHooks,
       "@next/next": nextPlugin,
+      "@typescript-eslint": tseslint.plugin,
     },
     rules: {
       ...js.configs.recommended.rules,
       ...tseslint.configs.recommended[0].rules,
       ...reactHooks.configs.recommended.rules,
       ...nextPlugin.configs["core-web-vitals"].rules,
-      "@typescript-eslint/no-unused-vars": "off",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
+      ],
     },
   },
 );
