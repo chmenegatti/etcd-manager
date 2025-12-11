@@ -1,13 +1,13 @@
 # Multi-stage build for Next.js + etcd3 client
-FROM node:20-alpine AS deps
+FROM node:22-alpine AS deps
 WORKDIR /app
 RUN apk add --no-cache libc6-compat \
   && corepack enable
-COPY package.json bun.lockb ./
+COPY package.json yarn.lock* ./
 # Try frozen install when a lock exists; fall back to regular install otherwise
 RUN yarn install --non-interactive --frozen-lockfile || yarn install --non-interactive
 
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 RUN apk add --no-cache libc6-compat \
   && corepack enable
@@ -16,7 +16,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN yarn build
 
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 RUN apk add --no-cache libc6-compat
 ENV NODE_ENV=production

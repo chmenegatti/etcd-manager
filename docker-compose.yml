@@ -11,7 +11,8 @@ services:
     ports:
       - "9100:3000"
     networks:
-      - nemesis-starter_nemesis
+      nemesis-starter_nemesis:
+        ipv4_address: 172.20.0.200
 
 networks:
   nemesis-starter_nemesis:

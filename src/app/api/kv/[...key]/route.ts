@@ -3,9 +3,10 @@ import { getEtcdClient } from "@/lib/etcd";
 
 export const runtime = "nodejs";
 
-export async function DELETE(_: Request, { params }: { params: { key: string[] } }) {
+export async function DELETE(_: Request, { params }: { params: Promise<{ key: string[] }> }) {
   try {
-    const decoded = decodeURIComponent(params.key.join("/"));
+    const { key } = await params;
+    const decoded = decodeURIComponent(key.join("/"));
     if (!decoded) {
       return NextResponse.json({ error: "Key is required" }, { status: 400 });
     }
